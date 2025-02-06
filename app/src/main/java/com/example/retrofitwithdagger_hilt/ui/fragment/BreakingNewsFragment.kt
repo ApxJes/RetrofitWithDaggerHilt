@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofitwithdagger_hilt.R
 import com.example.retrofitwithdagger_hilt.adapter.NewsAdapter
@@ -28,6 +29,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBreakingNewsBinding.bind(view)
         setUpRecyclerView()
+
+        newsAdapter.onItemClickListener {
+            val action = BreakingNewsFragmentDirections.actionBreakingNewsFragmentToArticleFragment(it)
+            findNavController().navigate(action)
+        }
 
         viewModel.breakingNews.observe(viewLifecycleOwner){responseType ->
             when(responseType){
