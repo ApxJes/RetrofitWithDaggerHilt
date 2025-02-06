@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.retrofitwithdagger_hilt.R
 import com.example.retrofitwithdagger_hilt.databinding.ActivityMainBinding
+import com.example.retrofitwithdagger_hilt.viewModel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         val navHost = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHost.navController
-
         binding.bottomNavBar.setupWithNavController(navController)
     }
 

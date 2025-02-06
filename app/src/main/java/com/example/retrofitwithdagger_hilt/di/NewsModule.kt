@@ -2,6 +2,7 @@ package com.example.retrofitwithdagger_hilt.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.retrofitwithdagger_hilt.adapter.NewsAdapter
 import com.example.retrofitwithdagger_hilt.api.NewsApi
 import com.example.retrofitwithdagger_hilt.db.NewsDao
 import com.example.retrofitwithdagger_hilt.db.NewsDatabase
@@ -56,4 +57,8 @@ object NewsModule {
     @Provides
     fun providesNewsDao(database: NewsDatabase): NewsDao =
         database.newsDao()
+
+    @Singleton
+    @Provides
+    fun providesNewsAdapter(): NewsAdapter = NewsAdapter()
 }
