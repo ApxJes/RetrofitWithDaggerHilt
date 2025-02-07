@@ -10,6 +10,7 @@ import com.example.retrofitwithdagger_hilt.R
 import com.example.retrofitwithdagger_hilt.adapter.NewsAdapter
 import com.example.retrofitwithdagger_hilt.databinding.FragmentArticleBinding
 import com.example.retrofitwithdagger_hilt.viewModel.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -19,7 +20,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
     private lateinit var binding: FragmentArticleBinding
     val args: ArticleFragmentArgs by navArgs()
 
-    val viewModel: NewsViewModel by viewModels()
+    private val viewModel: NewsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +33,14 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                 loadUrl(it)
             }
         }
-    }
 
+        binding.fltBtnSave.setOnClickListener {
+            viewModel.saveNews(article)
+            Snackbar.make(
+                view,
+                "Successfully saved",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
+    }
 }

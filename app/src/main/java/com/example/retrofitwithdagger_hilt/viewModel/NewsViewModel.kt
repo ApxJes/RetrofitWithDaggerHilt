@@ -3,6 +3,7 @@ package com.example.retrofitwithdagger_hilt.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.retrofitwithdagger_hilt.model.Article
 import com.example.retrofitwithdagger_hilt.model.NewsResponse
 import com.example.retrofitwithdagger_hilt.repository.NewsRepository
 import com.example.retrofitwithdagger_hilt.util.Resource
@@ -54,5 +55,16 @@ class NewsViewModel
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun saveNews(article: Article) = viewModelScope.launch {
+        repository.saveNews(article)
+    }
+
+    fun getSaveNews() = repository.getSaveNews()
+
+
+    fun deleteNews(article: Article) = viewModelScope.launch {
+        repository.deleteNews(article)
     }
 }
