@@ -55,10 +55,5 @@ object NewsModule {
 
     @Singleton
     @Provides
-    fun providesNewsDao(database: NewsDatabase): NewsDao =
-        database.newsDao()
-
-    @Singleton
-    @Provides
     fun providesNewsAdapter(): NewsAdapter = NewsAdapter()
 }

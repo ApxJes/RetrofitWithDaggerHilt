@@ -45,14 +45,12 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
 
                 is Resource.Error -> {
-                    responseType.data?.let { errorMessage ->
                         hidePaginationBar()
                         Toast.makeText(
                             requireContext(),
-                            "An error occur $errorMessage",
+                            "An error occur ${responseType.message}",
                             Toast.LENGTH_SHORT
                         ).show()
-                    }
                 }
 
                 is Resource.Loading -> showPaginationBar()
